@@ -33,7 +33,7 @@ if($stmt->rowCount() == 0) {
 	<textarea id="editor"><?php echo $rows[0]["data"]; ?></textarea>
 <div id="footer" style="padding: 10px;">
 <p>Great ideas come from many - or some quote like that. Thanks to <a href="http://longr.co/2cKGmZ">loyals</a> and <a href="https://github.com/andyhmltn/Minimal-Browser-IDE">andyhmltn</a> for their code and ideas.</p>
-<p>Dont like the bracket/quote completion? <a href="#" onclick="window.location.href = window.location.href += 'c=0';">Turn them off.</a></p>
+<p>Dont like the bracket/quote completion? <a href="#" onclick="window.location.href = window.location.href += '&c=0';">Turn them off.</a></p>
 </div>
 
 <script type="text/javascript">
