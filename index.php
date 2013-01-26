@@ -38,7 +38,6 @@ if($stmt->rowCount() == 0) {
 
 <script type="text/javascript">
 var i = <?php echo $rows[0]["id"]; ?>;
-var timer = false;
 
 function setM(text) {
 	$('#notes').show();
@@ -52,10 +51,8 @@ function save() {
 
 $('#sv').click(function () {
 	save();
-	if(!timer) {
-		timer = setInterval('save()', 15000);
-	}
 });
+var timer = setInterval('save()', 15000);
 </script>
 </body>
 </html>
