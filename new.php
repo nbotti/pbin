@@ -3,10 +3,11 @@ if(isset($_POST['title']) && isset($_POST['author'])) {
 	require('sqlinc.php');
 	$tile = $_POST['title'];
 	$author = $_POST['author'];
+	$type = $_POST['type'];
 	$stmt = $db->prepare("INSERT INTO docs (title, author, data) VALUES (?, ?, '')");
 	$stmt->execute(array($title, $author));
 	$insertId = $db->lastInsertId();
-	header("Location: index.php?p=" . $insertId);
+	header("Location: index.php?p=" . $insertId . "&t=" . $type);
 	exit;
 }
 ?>
@@ -24,6 +25,9 @@ if(isset($_POST['title']) && isset($_POST['author'])) {
 	<form method="POST">
 		<label for="title">Paste title: </label><input type="text" name="title" id="title" /><br />
 		<label for="author">Paste author: </label><input type="text" name="author" id="author" /><br />
+		<label for="type">Paste type: 
+		<select name="type" id="type"><option value="c">Code (Use behave.js IDE style autocomplete)</option>
+		<option value="t">Text</option></select>
 		<input type="submit" value="Create paste!" />
 	</form>
 </body>

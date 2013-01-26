@@ -23,9 +23,13 @@ if($stmt->rowCount() == 0) {
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href=" css/application.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-	<?php if(!isset($_GET['c']) || $_GET['c'] != 0) { ?>
 	<script src="https://raw.github.com/jakiestfu/Behave.js/master/behave.min.js"></script>
+	<script src="http://james.padolsey.com/demos/plugins/jQuery/autoresize.jquery.js"></script>
+	<?php if(isset($_GET['t']) && $_GET['t'] == "c") { ?>
 	<script src="js/application.js"></script>
+	<?php }
+	else { ?>
+	<script src="js/application-plain.js"></script>
 	<?php } ?>
 </head>
 <body>
@@ -59,6 +63,16 @@ function save() {
 
 $('#sv').click(function () {
 	save();
+});
+
+$(document).ready(function() {
+  $("#editor").on("keyup",function(){
+    var h = $(this).height();
+    $(this).css("height","0px");
+    var sh = $(this).prop("scrollHeight");
+    var minh = $(this).css("min-height").replace("px", "");
+    $(this).css("height",Math.max(sh,minh)+"px");  
+  });
 });
 </script>
 </body>
