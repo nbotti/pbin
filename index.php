@@ -30,7 +30,7 @@ if($stmt->rowCount() == 0) {
 </head>
 <body>
 	<div><b>The Pbin</b> - Paste: <?php echo $rows[0]["title"]; ?> <input type="button" value="save" id="sv" /> <span id="notes"></span></div>
-	<textarea id="editor"><?php echo $rows[0]["data"]; ?></textarea>
+	<textarea id="editor" onkeyup="kpressed()"><?php echo $rows[0]["data"]; ?></textarea>
 <div id="footer" style="padding: 10px;">
 <p>Great ideas come from many - or some quote like that. Thanks to <a href="http://longr.co/2cKGmZ">loyals</a> and <a href="https://github.com/andyhmltn/Minimal-Browser-IDE">andyhmltn</a> for their code and ideas.</p>
 <p>Dont like the bracket/quote completion? <a href="#" onclick="window.location.href = window.location.href += '&c=0';">Turn them off.</a></p>
@@ -38,21 +38,28 @@ if($stmt->rowCount() == 0) {
 
 <script type="text/javascript">
 var i = <?php echo $rows[0]["id"]; ?>;
+var timer;
+var h = false;
 
 function setM(text) {
 	$('#notes').show();
 	$('#notes').html(text);
-	$('#notes').delay(3000).fadeOut('slow');
+}
+
+function kpressed() {
+	if(!timer) { timer = setTimeout('save()', 6000); }
+	if(!h) { $('#notes').delay(1000).fadeOut('slow'); h = true; }
 }
 
 function save() {
 	$.post("sav.php", { data: $('#editor').val(), id: i }).done(function () {setM('Changes saved.');}).fail(function () {setM('An error occured. Changes not saved.');});
+	timer = false;
+	h = false;
 }
 
 $('#sv').click(function () {
 	save();
 });
-var timer = setInterval('save()', 15000);
 </script>
 </body>
 </html>
