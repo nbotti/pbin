@@ -1,0 +1,26 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: black;
+	color: white;
+}
+
+#editor {
+	font-size: 2rem;
+	font-family: monospace;
+	line-height: 1.4;
+	height: 100%;
+	width: 100%;
+	max-width: 90%;
+	min-height: 100%;
+	border: 0;
+	padding: 4rem;
+	background-color: black;
+	color: green;
+}
+
+#editor:focus {
+	outline: none;
+}
+
