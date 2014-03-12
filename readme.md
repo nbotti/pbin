@@ -4,4 +4,3 @@ In browser IDE/auto-saving pastebin. Includes behave.js, to make the editor more
 
 Uses php, mysql, and js.
 
-[Demo available here](http://nbserv.tk/pastebin/)
